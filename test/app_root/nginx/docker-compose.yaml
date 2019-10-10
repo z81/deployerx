@@ -1,0 +1,17 @@
+version: "3.4"
+
+services:
+  hello:
+    image: nginxdemos/hello:plain-text
+    ports:
+      - "5080:80"
+
+    labels:
+      - "traefik.http.routers.router0.rule=Host(`localhost`) && PathPrefix(`/nginx`)"
+    networks:
+      - default
+
+networks:
+  default:
+    external:
+      name: gateway

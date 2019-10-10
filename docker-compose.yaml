@@ -1,0 +1,13 @@
+version: "2"
+services:
+  app:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    env_file: .env
+    volumes:
+      - .:/app/
+      - ./app_root:/app_root
+      - /var/run/docker.sock:/var/run/docker.sock
+    ports:
+      - "${PORT}:${PORT}"
